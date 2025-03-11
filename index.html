@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cow Facts</title>
+    <style>
+        body {
+            background-color: #000; /* Black theme */
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .fact-container {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            max-width: 600px;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .fact-container:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-image: url('cow-icon.png'); /* Placeholder for cow icon */
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-display" class="fact-container">
+        <!-- Cow fact will be displayed here -->
+    </div>
+    <button id="new-fact-btn" class="btn">Show Random Cow Fact</button>
+    <button id="share-twitter-btn" class="btn">Share on Twitter</button>
+    <script>
+        const facts = [
+            "Cows have almost 360-degree panoramic vision, allowing them to see predators coming from any direction.",
+            "Cows have a strong sense of smell and can detect odors up to six miles away.",
+            "Cows are social animals and form close bonds with each other, often grooming each other.",
+            "A cow's stomach has four compartments: the rumen, reticulum, omasum, and abomasum, which help them digest tough plant material.",
+            "Cows can sleep while standing up, but they only dream when lying down.",
+            "The average cow chews at least 50 times per minute, and they move their jaws about 40,000 times a day.",
+            "Cows have a unique way of communicating with each other through various vocalizations and body language.",
+            "Cows can live up to 20 years, although dairy cows are typically kept for about 4-6 years.",
+            "Cows have been domesticated for over 10,000 years, originating from wild oxen known as aurochs.",
+            "A cow's heart beats between 60 and 70 beats per minute.",
+            "Cows produce around 25 to 30 gallons of saliva each day, which aids in digestion.",
+            "The average dairy cow produces about 6.3 gallons of milk each day.",
+            "Cows are known to have best friends and can become stressed when separated from them.",
+            "Cows have a memory span of about three years and can remember faces and locations.",
+            "The Holstein cow is the most common breed of dairy cow and is known for its distinctive black and white markings."
+        ];
+
+        document.getElementById('new-fact-btn').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact-display').textContent = facts[randomIndex];
+        });
+
+        document.getElementById('share-twitter-btn').addEventListener('click', () => {
+            const fact = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
